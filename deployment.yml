@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: first-deployment
+spec:
+  selector:
+    matchLabels:
+      app: team
+  replicas: 3
+  template:
+    metadata:
+      name: my-first-pod
+      labels:
+        app: team
+    spec:
+      containers:
+        - image: fawzyfathi/myteamapp:latest
+          name: myteamapp-container
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+          resources:
+            limits:
+              memory: "512Mi"
+              cpu: "1"
+            requests:
+              memory: "100Mi"

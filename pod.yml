@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-first-pod
+  labels:
+    app: team
+spec:
+  containers:
+    - image: fawzyfathi/myteamapp:latest
+      name: myteamapp-container
+      imagePullPolicy: IfNotPresent
+      ports:
+        - containerPort: 80
+      resources:
+        limits:
+          memory: "512Mi"
+          cpu: "1"
+        requests:
+          memory: "100Mi"
